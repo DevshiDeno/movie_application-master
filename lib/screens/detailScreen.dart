@@ -99,15 +99,18 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(8), bottom: Radius.circular(8)),
-                    child: Image(
-                      image: NetworkImage(
-                          'https://image.tmdb.org/t/p/w780${movie['backdrop_path']}'),
-                      fit: BoxFit.cover,
-                      height: MediaQuery.of(context).size.height * 0.7,
-                      width: MediaQuery.of(context).size.width,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(8), bottom: Radius.circular(8)),
+                      child: Image(
+                        image: NetworkImage(
+                            'https://image.tmdb.org/t/p/w780${movie['backdrop_path']}'),
+                        fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        width: MediaQuery.of(context).size.width,
+                      ),
                     ),
                   ),
                   ClipRRect(
@@ -212,7 +215,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             fontFamily: 'Mulish',
                             fontSize: 10,
                             letterSpacing: 0.02,
-                            color: Color(0xFFAAA9B1),
+                            color: Colors.blue,
                           ),
                         ),
                       ),
@@ -224,15 +227,15 @@ class _DetailScreenState extends State<DetailScreen> {
                           color: Colors.blueGrey[100],
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child:  Text(
-                        //   movie["genre"],
-                        //   style: TextStyle(
-                        //     fontFamily: 'Mulish',
-                        //     fontSize: 10,
-                        //     letterSpacing: 0.02,
-                        //     color: Color(0xFFAAA9B1),
-                        //   ),
-                        // ),
+                        child:  Text(
+                          "Drama",
+                          style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontSize: 10,
+                            letterSpacing: 0.02,
+                            color: Colors.blue,
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 8),
                       Container(
@@ -248,7 +251,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             fontFamily: 'Mulish',
                             fontSize: 10,
                             letterSpacing: 0.02,
-                            color: Color(0xFFAAA9B1),
+                            color: Colors.blue,
                           ),
                         ),
                       ),
@@ -291,7 +294,7 @@ class _DetailScreenState extends State<DetailScreen> {
           // color: Colors.white,
           child: const ListTile(
             title: Text("Language"),
-            subtitle: Text("2hrs 30min"),
+            subtitle: Text("English"),
           ),
         ),
         Container(
@@ -401,26 +404,40 @@ class _DetailScreenState extends State<DetailScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(
                           left: 12, top: 0, right: 12, bottom: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(8),
-                                bottom: Radius.circular(8)),
-                            child: Image(
-                                image: NetworkImage(actor.imageUrl),
-                                width: 143,
-                                height: 106),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            actor.name,
-                            style:
-                            const TextStyle(
-                                fontFamily: "Muli-Bold", fontSize: 14),
-                          ),
-                        ],
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.black12
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(8),
+                                    bottom: Radius.circular(8)),
+                                child: Image(
+                                    image: NetworkImage(actor.imageUrl),
+                                    width: 143,
+                                    height: 106),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                actor.name,
+                                style:
+                                const TextStyle(
+                                    fontFamily: "Muli-Bold", fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
